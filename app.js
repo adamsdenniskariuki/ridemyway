@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const morgan = require('morgan');
 
-const authRoutes = require('./controllers/auth');
-const rideRoutes = require('./controllers/rides');
+const authRoutes = require('./routes/auth');
+const rideRoutes = require('./routes/rides');
 const config = require('./config');
 
 const app = express();
