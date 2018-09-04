@@ -9,4 +9,4 @@ let userSchema =  new mongoose.Schema({
     age: Number,
 });
 
-module.exports = mongoose.model('Users', userSchema);
+let users = module.exports = mongoose.model('Users', userSchema);
