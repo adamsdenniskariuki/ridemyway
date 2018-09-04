@@ -1,8 +1,6 @@
 # Ridemyway
 
-[![Build Status](https://travis-ci.org/adamsdenniskariuki/ridemyway.svg?branch=develop)](https://travis-ci.org/adamsdenniskariuki/ridemyway)
-
-[![Coverage Status](https://coveralls.io/repos/github/adamsdenniskariuki/ridemyway/badge.svg?branch=develop)](https://coveralls.io/github/adamsdenniskariuki/ridemyway?branch=develop)
+[![Build Status](https://travis-ci.org/adamsdenniskariuki/ridemyway.svg?branch=develop)](https://travis-ci.org/adamsdenniskariuki/ridemyway) [![Coverage Status](https://coveralls.io/repos/github/adamsdenniskariuki/ridemyway/badge.svg?branch=develop)](https://coveralls.io/github/adamsdenniskariuki/ridemyway?branch=develop)
 
 Carpooling App in nodeJS:
 
