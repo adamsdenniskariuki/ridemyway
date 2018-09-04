@@ -1,10 +1,12 @@
-# ridemyway
+# Ridemyway
 
 Carpooling App
 
 - Allows drivers to create and accepts rides.
 - Allows users to view and request for rides.
 
+| Method | Summary |
+| --- | --- |
 |POST /auth/signup |	Register a user|
 |POST /auth/login |	Login a user|
 |GET /rides |	Fetch all available rides|
