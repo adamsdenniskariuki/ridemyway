@@ -60,14 +60,14 @@ authRouter.post('/login', [
                 return res.status(422).json({ message: `an error occured: ${err}` });
             }
             if(user === null){
-                return res.status(422).json({ message: 'user not found' });
+                return res.status(404).json({ message: 'user not found' });
             }
             bcrypt.compare(req.body.password, user.password, function(err, passwordResponse) {
                 if(!passwordResponse) {
                     return res.status(422).json({ message: 'invalid email or password' });
                 }
                 const token  = authUtils.createToken(user._id);
-                return res.status(201).json({ message: 'login successful', token }); 
+                return res.status(200).json({ message: 'login successful', token }); 
               });
         })
     }

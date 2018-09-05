@@ -1,7 +1,8 @@
 const express = require('express');
-const authUtils = require('../utils/auth');
 
 const rideModel = require('../models/ride');
+
+const authUtils = require('../utils/auth');
 
 const rideRouter = express.Router();
 
