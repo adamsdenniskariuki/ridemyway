@@ -3,7 +3,7 @@ const config = require('../config');
 
 class Database {
 
-    contructor(){
+    constructor(){
         this.connect();
     }
 
