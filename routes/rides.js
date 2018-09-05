@@ -20,7 +20,7 @@ rideRouter.use((req, res, next) => {
 rideRouter.get('/', (req, res, next) => {
     rideModel.find((err, rides) => {
         if (err) {
-            return res.status(422).json({ message: `an error occured: ${err}` });
+            return res.status(500).json({ message: `an error occured: ${err}` });
         }
         return res.status(200).json({ message: 'all rides retrieved', rides });
     });

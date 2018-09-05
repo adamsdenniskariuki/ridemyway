@@ -24,7 +24,7 @@ authRouter.post('/signup', [
     const errors = validator.validationResult(req);
 
     if(!errors.isEmpty()){
-        res.status(422).json({ message: errors.array() });
+        res.status(400).json({ message: errors.array() });
     } else {
         bcrypt.hash(req.body.password, 10, function (err, hash) {
             let newUser = new userModel({
@@ -36,7 +36,7 @@ authRouter.post('/signup', [
             });
             newUser.save(function (err) {
                 if (err) {
-                    return res.status(422).json({ message: `an error occured: ${err}` });
+                    return res.status(500).json({ message: `an error occured: ${err}` });
                 }
                 return res.status(201).json({ message: 'user successfully saved' });
             });
@@ -52,19 +52,19 @@ authRouter.post('/login', [
     const errors = validator.validationResult(req);
 
     if(!errors.isEmpty()){
-        res.status(422).json({ message: errors.array() });
+        res.status(400).json({ message: errors.array() });
     } else {
         var query = userModel.where({email: req.body.email});
         query.findOne((err, user) => {
             if(err){
-                return res.status(422).json({ message: `an error occured: ${err}` });
+                return res.status(500).json({ message: `an error occured: ${err}` });
             }
             if(user === null){
                 return res.status(404).json({ message: 'user not found' });
             }
             bcrypt.compare(req.body.password, user.password, function(err, passwordResponse) {
                 if(!passwordResponse) {
-                    return res.status(422).json({ message: 'invalid email or password' });
+                    return res.status(403).json({ message: 'invalid email or password' });
                 }
                 const token  = authUtils.createToken(user._id);
                 return res.status(200).json({ message: 'login successful', token }); 
