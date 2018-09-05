@@ -23,8 +23,7 @@ describe('App', () => {
             .request(app)
             .get('/')
             .end((err, res) => {
-              assert.isObject(res.body);
-              res.body.message.should.equal('Welcome to the ride my way API');
+                res.body.message.should.equal('Welcome to the ride my way API');
             });
     });
 });

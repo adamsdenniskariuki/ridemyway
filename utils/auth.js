@@ -10,8 +10,8 @@ const createToken = (id) => {
 }
 
 const authenticate = (req, res) => {
-    if(!req.header('Authorization') && !req.headers.authorization.split(' ')[0] === 'Bearer'){
-        return res.status(400).json({ message: 'an access token is required.' });
+    if(!req.header('Authorization') || !req.headers.authorization.split(' ')[0] === 'Bearer'){
+        return null;
     }
     const authorizationHeader = req.header('Authorization');
     const token = authorizationHeader.split(' ')[1];

@@ -10,7 +10,7 @@ const rideRouter = express.Router();
 rideRouter.use((req, res, next) => {
     const user = authUtils.authenticate(req, res);
     if(!user){
-        return res.status(403).json({ message: 'access denied. login to get a token.' });
+        return res.status(403).json({ message: 'access denied. a valid access token is required.' });
     }
     req.user = user;
     next();
