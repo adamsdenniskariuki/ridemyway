@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../config');
 
 const userModel = require('../models/user')
+const authUtils = require('../utils/auth');
 
 const authRouter = express.Router();
 
@@ -12,6 +13,7 @@ authRouter.get('/', (req, res) => {
     res.json({ message: 'Send a /POST request to /signup or /login'});
 })
 
+//signup
 authRouter.post('/signup', [
     validator.check('email', 'invalid email').isEmail(),
     validator.check('first_name', 'first name is missing or invalid').isAlpha(),
@@ -42,6 +44,7 @@ authRouter.post('/signup', [
     }
 });
 
+//login
 authRouter.post('/login', [
     validator.check('email', 'invalid email').isEmail(),
     validator.check('password', 'password is missing or invalid').isLength(5).isAlphanumeric(),
@@ -63,19 +66,11 @@ authRouter.post('/login', [
                 if(!passwordResponse) {
                     return res.status(422).json({ message: 'invalid email or password' });
                 }
-                const token  = createToken(user._id);
+                const token  = authUtils.createToken(user._id);
                 return res.status(201).json({ message: 'login successful', token }); 
               });
         })
     }
 });
-
-const createToken = (id) => {
-    return jwt.sign(
-        { data: id }, 
-        config.RMW_SECRET, 
-        { expiresIn: '1h' }
-    );
-}
 
 module.exports = authRouter;
